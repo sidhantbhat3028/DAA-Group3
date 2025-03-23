@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithm Project Showcase</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <a href="#intro">Introduction</a>
+        <a href="#paper1">Paper 1</a>
+        <a href="#paper2">Paper 2</a>
+        <a href="#paper3">Paper 3</a>
+        <a href="#results">Results</a>
+        <a href="#visualizations">Visualizations</a>
+        <a href="#conclusion">Conclusion</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Introduction Section -->
+      <section id="intro" class="section">
+        <div class="jumbotron">
+          <h1 class="display-4">Introduction</h1>
+          <p class="lead">
+            This report presents the implementation and performance comparison
+            of three different maximal clique detection algorithms:
+          </p>
+          <ol>
+            <li>Tomita et al.'s Algorithm (2006)</li>
+            <li>Bron-Kerbosch Algorithm with Pivoting (1973)</li>
+            <li>
+              Arboricity-based Clique Algorithm (Recent optimizations using
+              degeneracy ordering)
+            </li>
+          </ol>
+          <p>
+            These algorithms were tested on three real-world graph datasets:
+          </p>
+          <ul>
+            <li>
+              <strong>Email-Enron Dataset</strong> - Communication network of
+              Enron employees.
+            </li>
+            <li>
+              <strong>AS-Skitter Dataset</strong> - Network topology of the
+              Internet at the autonomous systems (AS) level.
+            </li>
+            <li>
+              <strong>Wiki-Vote Dataset</strong> - Voting relationships between
+              Wikipedia editors.
+            </li>
+          </ul>
+          <p>
+            The goal of this study is to analyze execution time, the number of
+            maximal cliques, and the distribution of clique sizes, while
+            comparing the efficiency of different algorithmic approaches.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research Papers -->
+      <section id="paper1" class="section">
+        <h2>Research Paper 1: Tomita et al.'s Algorithm</h2>
+        <div class="card">
+          <h3 class="card-title">Brief Description</h3>
+          <p class="card-text">
+            Tomita et al. developed an enhanced branch-and-bound method for
+            maximal clique detection. Their algorithm incorporates pivoting to
+            minimize unnecessary recursive calls, outperforming the traditional
+            Bron-Kerbosch method.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Algorithm Overview</h3>
+          <p class="card-text">
+            The process involves selecting a pivot vertex that maximizes overlap
+            with potential vertices, and then expanding the clique by
+            recursively adding non-neighboring nodes of the pivot. The algorithm
+            backtracks when no more candidate vertices are available.
+          </p>
+        </div>
+      </section>
+
+      <section id="paper2" class="section">
+        <h2>Research Paper 2: Bron-Kerbosch Algorithm with Pivoting</h2>
+        <div class="card">
+          <h3 class="card-title">Brief Description</h3>
+          <p class="card-text">
+            The Bron-Kerbosch algorithm is a recursive backtracking method for
+            finding maximal cliques. We implemented the pivoting version, which
+            improves performance by minimizing the number of recursive calls.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Algorithm Overview</h3>
+          <p class="card-text">
+            Select a pivot vertex (reduces the branching factor). Recursively
+            explore clique extensions by including/excluding vertices. Backtrack
+            and prune search space when no further clique extensions exist. This
+            algorithm is widely used due to its simplicity and efficiency for
+            small to medium-sized graphs.
+          </p>
+        </div>
+      </section>
+
+      <section id="paper3" class="section">
+        <h2>Research Paper 3: Arboricity-based Clique Algorithm</h2>
+        <div class="card">
+          <h3 class="card-title">Brief Description</h3>
+          <p class="card-text">
+            The Arboricity-based clique enumeration algorithm, developed by
+            Chiba and Nishizeki, utilizes a graph's arboricity to efficiently
+            find cliques. It systematically scans edges, processing vertices by
+            decreasing degree and examining neighbor-induced subgraphs.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Algorithm Overview</h3>
+          <p class="card-text">
+            The algorithm runs in O(a(G) * m) time per clique, where a(G) is the
+            arboricity and m is the number of edges. This approach excels in
+            graphs with low arboricity, such as planar or sparse networks,
+            outperforming traditional methods. However, it may be less effective
+            in dense graphs with high arboricity, like social networks, where
+            degeneracy-based methods like Bron-Kerbosch with pivoting might be
+            more efficient.
+          </p>
+        </div>
+      </section>
+
+      <!-- New Execution Times Table Section -->
+      <section id="results" class="section">
+        <h2>Execution Times Comparison</h2>
+        <div class="card">
+          <h3 class="card-title">Comprehensive Performance Metrics</h3>
+          <div class="table-container">
+            <table class="execution-table">
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Algorithm</th>
+                  <th>Largest Clique Size</th>
+                  <th>Total Maximal Cliques</th>
+                  <th>Execution Time (HH:MM:SS:MS)</th>
+                  <th>Execution Time (s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Email-Enron</td>
+                  <td>Tomita et al.</td>
+                  <td>20</td>
+                  <td>226,859</td>
+                  <td>02:22:649</td>
+                  <td>142.649</td>
+                </tr>
+                <tr>
+                  <td>Email-Enron</td>
+                  <td>Bron-Kerbosch with Degeneracy Ordering</td>
+                  <td>20</td>
+                  <td>226,859</td>
+                  <td>01:35:985</td>
+                  <td>95.985</td>
+                </tr>
+                <tr>
+                  <td>Email-Enron</td>
+                  <td>Optimized Arboricity-based Clique Algorithm</td>
+                  <td>18</td>
+                  <td>107,050</td>
+                  <td>01:39:29:170</td>
+                  <td>5,969.17</td>
+                </tr>
+                <tr>
+                  <td>Wiki-Vote</td>
+                  <td>Tomita et al.</td>
+                  <td>17</td>
+                  <td>460,185</td>
+                  <td>01:21:691</td>
+                  <td>81.691</td>
+                </tr>
+                <tr>
+                  <td>Wiki-Vote</td>
+                  <td>Bron-Kerbosch with Degeneracy Ordering</td>
+                  <td>17</td>
+                  <td>460,185</td>
+                  <td>00:56:354</td>
+                  <td>56.354</td>
+                </tr>
+                <tr>
+                  <td>Wiki-Vote</td>
+                  <td>Optimized Arboricity-based Clique</td>
+                  <td>15</td>
+                  <td>144,132</td>
+                  <td>15:35.364</td>
+                  <td>935.364</td>
+                </tr>
+                <tr>
+                  <td>AS-Skitter</td>
+                  <td>Tomita et al.</td>
+                  <td>67</td>
+                  <td>37,322,355</td>
+                  <td>05:29:21:052</td>
+                  <td>19,761.053</td>
+                </tr>
+                <tr>
+                  <td>AS-Skitter</td>
+                  <td>Bron-Kerbosch with Degeneracy Ordering</td>
+                  <td>67</td>
+                  <td>37,322,355</td>
+                  <td>03:44:34:241</td>
+                  <td>13,474.241</td>
+                </tr>
+                <tr>
+                  <td>AS-Skitter</td>
+                  <td>Optimized Arboricity-based Clique Algorithm</td>
+                  <td>67</td>
+                  <td>37,322,355</td>
+                  <td>>20 hours</td>
+                  <td>35 hours</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="card-text">
+            Table 1: Comprehensive comparison of algorithm performance across
+            all test datasets. Execution times are provided in both
+            human-readable format (HH:MM:SS:MS) and seconds for easier
+            quantitative comparison. The Bron-Kerbosch algorithm with degeneracy
+            ordering consistently outperforms other methods, while the
+            Arboricity-based approach struggles with larger networks.
+          </p>
+        </div>
+      </section>
+
+      <!-- Visualizations Section -->
+      <section id="visualizations" class="section">
+        <h2>Performance Visualizations</h2>
+
+        <!-- Visualization 1 -->
+        <div class="card">
+          <h3 class="card-title">Execution Time Comparison Across Datasets</h3>
+          <div class="image-container">
+            <img
+              src="ab1.jpg"
+              alt="Execution Time for Each Algorithm Across All Datasets"
+            />
+          </div>
+          <p class="card-text">
+            Figure 1: Bar chart comparing execution times (in seconds,
+            logarithmic scale) for all three algorithms across the Email-Enron,
+            Wiki-Vote, and AS-Skitter datasets. The Bron-Kerbosch algorithm
+            consistently demonstrates the fastest execution times, while the
+            Arboricity-based approach shows significantly longer runtimes across
+            all datasets.
+          </p>
+        </div>
+
+        <!-- Visualization 2 -->
+        <div class="card">
+          <h3 class="card-title">Runtime Distribution By Dataset</h3>
+          <div class="image-container">
+            <img
+              src="ab2.jpg"
+              alt="Run time across different algorithms for each dataset"
+            />
+          </div>
+          <p class="card-text">
+            Figure 2: Side-by-side comparison of execution times for each
+            algorithm grouped by dataset. This visualization highlights the
+            consistent performance pattern across all three datasets, with
+            Bron-Kerbosch consistently outperforming Tomita and Arboricity-based
+            algorithms.
+          </p>
+        </div>
+
+        <!-- Visualization 3: AS-Skitter Clique Size Distribution -->
+        <div class="card">
+          <h3 class="card-title">AS-Skitter Clique Size Distribution</h3>
+          <div class="image-container">
+            <img src="ab5.jpg" alt="AS-Skitter Clique Size Distribution" />
+          </div>
+          <p class="card-text">
+            Figure 3: Histogram showing the distribution of clique sizes in the
+            AS-Skitter dataset. The distribution is bimodal with over 3 million
+            small cliques (sizes 2-3) and a sustained presence of larger cliques
+            (sizes 15-30). This pattern reflects the internet's scale-free
+            network structure with many peripheral connections and fewer densely
+            connected core components.
+          </p>
+        </div>
+
+        <!-- Visualization 4: Wiki-Vote Clique Size Distribution -->
+        <div class="card">
+          <h3 class="card-title">Wiki-Vote Clique Size Distribution</h3>
+          <div class="image-container">
+            <img src="ab3.jpg" alt="Wiki-Vote Clique Size Distribution" />
+          </div>
+          <p class="card-text">
+            Figure 4: Histogram showing the distribution of clique sizes in the
+            Wiki-Vote dataset. The distribution peaks around clique sizes 7-8
+            with approximately 80,000 instances and tapers off sharply after
+            size 12. This suggests a homogeneous community structure where
+            editorial voting relationships form consistently sized groups.
+          </p>
+        </div>
+
+        <!-- Visualization 5: Email-Enron Clique Size Distribution -->
+        <div class="card">
+          <h3 class="card-title">Email-Enron Clique Size Distribution</h3>
+          <div class="image-container">
+            <img src="ab4.jpg" alt="Email-Enron Clique Size Distribution" />
+          </div>
+          <p class="card-text">
+            Figure 5: Histogram showing the distribution of clique sizes in the
+            Email-Enron dataset. The distribution is centered around clique
+            sizes 7-10 with a gradual tapering toward larger sizes (up to
+            17-20). This reveals organizational communication structures with
+            varied team sizes and suggests the presence of larger, persistent
+            communication groups.
+          </p>
+        </div>
+      </section>
+
+      <!-- Conclusion Section (replacing Algorithm Performance Analysis) -->
+      <section id="conclusion" class="section">
+        <div class="jumbotron">
+          <h1 class="display-4">Conclusion</h1>
+          <p class="lead">
+            Maximal clique detection identifies fully connected vertex subsets
+            in undirected graphs, with applications in social networks and
+            cybersecurity. This study evaluates three algorithms: Tomita et al.
+            (2006), Bron-Kerbosch with Pivoting (1973), and the Arboricity-based
+            Clique Algorithm.
+          </p>
+          <p>
+            Tested on Email-Enron, AS-Skitter, and Wiki-Vote datasets, the
+            analysis measures execution time, total cliques, and clique size
+            distributions. Key findings include:
+          </p>
+          <ul>
+            <li>
+              <strong
+                >Bron-Kerbosch remains the most efficient choice for maximal
+                clique detection</strong
+              >, excelling in both execution time and accuracy.
+            </li>
+            <li>
+              <strong>Tomita is a competitive alternative</strong>, performing
+              similarly to Bron-Kerbosch with only minor performance trade-offs.
+            </li>
+            <li>
+              <strong
+                >The Arboricity-based approach is inefficient and
+                unsuitable</strong
+              >
+              for large-scale real-world networks.
+            </li>
+            <li>
+              <strong
+                >AS-Skitter demonstrates the scalability challenges</strong
+              >
+              in clique detection, requiring impractically long computation
+              times.
+            </li>
+            <li>
+              <strong
+                >Wiki-Vote and Email-Enron highlight different network
+                structures</strong
+              >, where Wiki-Vote favors mid-sized cliques, while Email-Enron
+              contains larger but fewer cliques.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        color: var(--primary-color);
+        border-top: 1px solid var(--primary-color);
+        margin-top: 40px;
+      "
+    >
+      Submission by Group 3
+    </footer>
+  </body>
+</html>
