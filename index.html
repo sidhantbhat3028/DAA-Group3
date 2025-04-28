@@ -172,7 +172,9 @@
             Table 1: Comprehensive comparison of algorithm performance across
             all test datasets. Execution times are provided in seconds for easier
             quantitative comparison. The CoreExact algorithm consistently outperforms the Exact algorithm.
+          </p>
 
+          <p class="card-text">
             When analyzing efficiency, a clear trend emerges. CoreExact consistently achieved lower execution times compared to Algorithm-1, reducing runtime by approximately 30% to 45% across all datasets tested. This improvement was achieved without any compromise on the accuracy of the output. The reduction in execution time can be attributed to the core decomposition strategy employed by CoreExact, which allowed the algorithm to focus only on the denser portions of the graph, thereby minimizing the size of the flow networks needed at each stage of the binary search.
 
             The comparative analysis also reveals significant differences in scalability between the two algorithms. As the size of the input graphs increased, the performance advantage of CoreExact became more pronounced. While Algorithm-1 performed acceptably on small and medium-sized networks, its execution time grew rapidly with larger graphs. CoreExact, by contrast, demonstrated much better scalability, making it particularly suitable for very large graphs such as those representing Internet topologies or large biological datasets. The ability of CoreExact to prune low-density regions early in the computation significantly reduced the computational burden, allowing it to handle larger and more complex graphs effectively.
