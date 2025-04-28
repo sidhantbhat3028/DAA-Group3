@@ -1,4 +1,3 @@
-Got it — you want the README updated properly for your project, where:
 
 The code files are Exact.cpp and CoreExact.cpp.
 
